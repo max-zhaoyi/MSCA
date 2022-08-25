@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  table(class="chat-log", id="chat-log") 
+    thead
+      tr(class="chat-header", id="chat-header")
+        th Alias
+        th Time
+        th Message
+    tbody 
+      each item in items 
+        tr 
+          td= item.alias 
+          td= item.time 
+          td= item.message
+  br
+  form(method="POST", action="/")
+    label(for="user-name") Alias:
+    br
+    input(type="text", id="user-name", name="uname")
+    br
+    br
+    label(for="message-input") Message:
+    br
+    input(type="text", id="message-input", name="minput")
+    br 
+    br
+    input(type="submit", value="Send")
