@@ -23,4 +23,5 @@ sudo chmod -R 777 .
 #install node module
 npm install
 # start the app
+sudo setcap 'cap_net_bind_service=+ep' /.nvm/versions/node/v16.17.0/bin/node
 npm start > app.out.log 2> app.err.log < /dev/null &
