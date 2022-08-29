@@ -17,7 +17,7 @@ const redis = new Redis({
 /* GET home page. */
 router.get('/', async (req, res, next) =>{
   msglist = []
-  let result = await redis.xrange("mystream", "-", "+", "COUNT", 25)
+  let result = await redis.xrevrange("mystream", "+", "-", "COUNT", 25)
   result.forEach(entry => {
     row = entry[1]
     insertRow(row[1], row[3], row[5])
