@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
   let time = new Date().toLocaleTimeString()  
   redis.xadd("mystream", "*", "alias", req.body.uname, "date", time, "message", req.body.minput)  
   msglist = [];
-  let result = await redis.xrange("mystream", "-", "+", "COUNT", 25)
+  let result = await redis.xrevrange("mystream", "+", "-", "COUNT", 25)
   result.forEach(entry => {
     row = entry[1]
     insertRow(row[1], row[3], row[5])
@@ -49,7 +49,7 @@ router.post("/", async (req, res) => {
 });
 
 function insertRow(uname, time, minput){
-  msglist.push({
+  msglist.unshift({
     "alias": uname,
     "time": time,
     "message": minput
