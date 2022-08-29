@@ -21,7 +21,6 @@ To connect (http) : http://msca-autoscale.link/
 ### Issues: 
 - Display time is locked to EC2's timezone (GMT +0)
 - Page does not dynamically reload (On incoming message page needs to be refreshed)
-- Blank entries are added to the Redis database
 
 ### Notes:
 - I should have used a front-end framework such as React to implement the dynamic webpage
